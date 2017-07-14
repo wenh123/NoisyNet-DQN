@@ -243,5 +243,6 @@ if __name__ == '__main__':
                 logger.log()
                 logger.log("ETA: " + pretty_eta(int(steps_left / fps_estimate)))
                 logger.log()
+                # add summary for one episode
                 ep_stats.add_all_summary(writer, [mean_ep_reward, ep_length], num_iters)
                 ep_length = 0

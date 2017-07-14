@@ -29,12 +29,14 @@ python train.py --env Breakout --no-double-q
 
 ## Results
 
-[To be added]
+**orange: NoisyNet-DQN; blue: DQN**
 
 Experiment on Breakout-NoFrameskip-v4:
+![](figures/breakout.png)
 
+Other experiment results will be added soon :fire:
 
-The corresponding event file can be found at [drive]()
+The corresponding event files can be found at [drive]()
 
 ## Reference
 - Noisy Networks for Exploration

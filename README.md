@@ -29,7 +29,12 @@ python train.py --env Breakout --no-double-q
 
 ## Results
 
-To be added
+[To be added]
+
+Experiment on Breakout-NoFrameskip-v4:
+
+
+The corresponding event file can be found at [drive]()
 
 ## Reference
 - Noisy Networks for Exploration

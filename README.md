@@ -6,6 +6,24 @@ Disclaimer: this code is highl based on [@openai/baselines](https://github.com/o
 
 ## Usage
 
+First, move the modified files to openai baselines (to support NoisyNet)
+```
+mv build_graph.py ./baselines/baselines/deepq/build_graph.py
+mv tf_util.py ./baselines/baselines/common/tf_util.py
+```
+
+And add this line to your .bashrc (append to the PYTHONPATH)
+```
+export PYTHONPATH="PATH-TO-NoisyNet-DQN/baselines:$PYTHONPATH"
+```
+
+Train the agent and be patient
+```python
+# with NoisyNet-DQN
+python train.py --env Breakout --no-double-q --noisy
+# with vanilla DQN
+python train.py --env Breakout --no-double-q
+```
 
 ## Results
 

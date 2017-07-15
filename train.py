@@ -136,7 +136,6 @@ if __name__ == '__main__':
             double_q=args.double_q,
             noisy=args.noisy,
         )
-
         approximate_num_iters = args.num_steps / 4
         exploration = PiecewiseSchedule([
             (0, 1.0),
@@ -176,10 +175,10 @@ if __name__ == '__main__':
             # Take action and store transition in the replay buffer.
             if args.noisy:
                 # greedily choose
-                action = act[1](np.array(obs)[None])[0]
+                action = act(np.array(obs)[None], stochastic=False)[0]
             else:
                 # epsilon greedy
-                action = act[0](np.array(obs)[None], update_eps=exploration.value(num_iters))[0]
+                action = act(np.array(obs)[None], update_eps=exploration.value(num_iters))[0]
             new_obs, rew, done, info = env.step(action)
             replay_buffer.add(obs, action, rew, new_obs, float(done))
             obs = new_obs

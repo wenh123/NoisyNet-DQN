@@ -6,12 +6,12 @@ Disclaimer: this code is highl based on [@openai/baselines](https://github.com/o
 
 ## Usage
 
-First, move the modified files to openai baselines (to support NoisyNet)
+First, copy the modified files to openai baselines (to support NoisyNet)
 ```bash
 git clone --recursive https://github.com/andrewliao11/NoisyNet-DQN.git
 cd NoisyNet-DQN
-mv build_graph.py ./baselines/baselines/deepq/build_graph.py
-mv tf_util.py ./baselines/baselines/common/tf_util.py
+cp build_graph.py ./baselines/baselines/deepq/build_graph.py
+cp tf_util.py ./baselines/baselines/common/tf_util.py
 ```
 
 And add this line to your .bashrc (append to the PYTHONPATH)
@@ -22,19 +22,33 @@ export PYTHONPATH="PATH-TO-NoisyNet-DQN/baselines:$PYTHONPATH"
 Train the agent and be patient
 ```bash
 # with NoisyNet-DQN
-python train.py --env Breakout --no-double-q --noisy
+python train.py --env Breakout --no-double-q --noisy --save-dir MODEL_PATH
 # with vanilla DQN
-python train.py --env Breakout --no-double-q
+python train.py --env Breakout --no-double-q --save-dir MODEL_PATH
 ```
 
 ## Results
 
 **orange: NoisyNet-DQN; blue: DQN**
 
+Experiment on Atlantis-NoFrameskip-v4:
+![](figures/atlantis.png)
+
+Experiment on DemonAttack-NoFrameskip-v4:
+![](figures/demon-attack.png)
+
+Experiment on Kangaroo-NoFrameskip-v4:
+![](figures/kangaroo.png)
+
+Experiment on Assault-NoFrameskip-v4:
+![](figures/assault.png)
+
 Experiment on Breakout-NoFrameskip-v4:
 ![](figures/breakout.png)
 
 Other experiment results will be added soon :fire:
+
+Note that I pick the environment that is favorable to NoisyNet, according to the paper experiment. In some specific environment, NoisyNet will result in equal or even worse peformance. (You are suggestted to read the paper if you're interested in this repo.)
 
 The corresponding event files can be found at [drive]()
 

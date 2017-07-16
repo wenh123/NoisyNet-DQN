@@ -51,7 +51,7 @@ Experiment on Assault-NoFrameskip-v4:
 Experiment on Breakout-NoFrameskip-v4:
 ![](figures/breakout.png)
 
-Other experiment results will be added soon :fire:
+Other experiment results will be added soon :fire: (Benchmarking takes time so be patient.)
 
 Note that I pick the environment that is favorable to NoisyNet, according to the paper experiment. In some specific environment, NoisyNet will result in equal or even worse peformance. (You are suggestted to read the paper if you're interested in this repo.)
 

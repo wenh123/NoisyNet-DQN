@@ -1,6 +1,6 @@
 # NoisyNet-DQN
 
-I implement the [NoisyNet](https://arxiv.org/abs/1706.10295) for DQN-based RL algorithms. The code is evaluated on Atari2000, which is commonly used to benchmark the RL algorithms. Also, the tensorflow summary is added to better visualize the training process. More about my notes for NoisyNet can be found at [@andrewliao11/Deep-Reinforcement-Learning-Survey](andrewliao11/Deep-Reinforcement-Learning-Survey)
+I implement the [NoisyNet](https://arxiv.org/abs/1706.10295) for DQN-based RL algorithms. The code is evaluated on Atari2000, which is commonly used to benchmark the RL algorithms. Also, the tensorflow summary is added to better visualize the training process. More about my notes for NoisyNet can be found at [@andrewliao11/Deep-Reinforcement-Learning-Survey](https://github.com/andrewliao11/Deep-Reinforcement-Learning-Survey/blob/master/papers/Noisy%20Networks%20for%20Exploration.md)
 
 Disclaimer: this code is highl based on [@openai/baselines](https://github.com/openai/baselines). Thanks for the great works!
 

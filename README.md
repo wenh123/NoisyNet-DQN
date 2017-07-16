@@ -4,6 +4,11 @@ I implement the [NoisyNet](https://arxiv.org/abs/1706.10295) for DQN-based RL al
 
 Disclaimer: this code is highl based on [@openai/baselines](https://github.com/openai/baselines). Thanks for the great works!
 
+## Basic requirement
+- tensorflow
+- python > 3.5
+- gym[atari]
+
 ## Usage
 
 First, copy the modified files to openai baselines (to support NoisyNet)

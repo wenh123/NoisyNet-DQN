@@ -39,6 +39,8 @@ def dueling_model(img_in, num_actions, scope, noisy=False, reuse=False):
 
         with tf.variable_scope("state_value"):
             if noisy:
+                # Apply noisy network on fully connected layers
+                # ref: https://arxiv.org/abs/1706.10295
                 state_hidden = noisy_dense(out, name='noisy_fc1', size=512, activation_fn=tf.nn.relu)
                 state_score = noisy_dense(state_hidden, name='noisy_fc2', size=1)
             else:
@@ -46,6 +48,8 @@ def dueling_model(img_in, num_actions, scope, noisy=False, reuse=False):
                 state_score = layers.fully_connected(state_hidden, num_outputs=1, activation_fn=None)
         with tf.variable_scope("action_value"):
             if noisy:
+                # Apply noisy network on fully connected layers
+                # ref: https://arxiv.org/abs/1706.10295
                 actions_hidden = noisy_dense(out, name='noisy_fc1', size=512, activation_fn=tf.nn.relu)
                 action_scores = noisy_dense(actions_hidden, name='noisy_fc2', size=num_actions)
             else:

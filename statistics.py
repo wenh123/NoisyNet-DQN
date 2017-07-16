@@ -1,3 +1,6 @@
+# the code is similar to https://github.com/carpedm20/deep-rl-tensorflow/blob/master/agents/statistic.py
+# in my implementation, I use one statistics for recording immediate results and 
+#             another one for episodic results.
 import baselines.common.tf_util as U
 import tensorflow as tf
 import numpy as np
@@ -27,6 +30,8 @@ class statistics():
         self.summaries = tf.summary.merge(self.scalar_summaries+self.histogram_summaries)
 
     def add_all_summary(self, writer, values, iter):
+        # Note that the order of the incoming ```values``` should be the same as the that of the 
+        #            ```scalar_keys``` given in ```__init__```
         if np.sum(np.isnan(values)+0) != 0:
             return
         sess = U.get_session()

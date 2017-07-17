@@ -171,7 +171,7 @@ if __name__ == '__main__':
             if 'sigma' in param.name and 'deepq/q_func/action_value' in param.name:
                 summary_name = param.name.replace('deepq/q_func/action_value/', '').replace('/', '.').split(':')[0]
                 sigma_name_list.append(summary_name)
-                sigma_list.append(tf.reduce_mean(param))
+                sigma_list.append(tf.reduce_mean(tf.abs(param)))
         f_mean_sigma = U.function(inputs=[], outputs=sigma_list)
         # Statistics
         writer = tf.summary.FileWriter(savedir, sess.graph)

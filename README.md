@@ -1,8 +1,16 @@
 # NoisyNet-DQN
 
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 I implement the [NoisyNet](https://arxiv.org/abs/1706.10295) for DQN-based RL algorithms. The code is evaluated on Atari2000, which is commonly used to benchmark the RL algorithms. Also, the tensorflow summary is added to better visualize the training process. More about my notes for NoisyNet can be found at [@andrewliao11/Deep-Reinforcement-Learning-Survey](https://github.com/andrewliao11/Deep-Reinforcement-Learning-Survey/blob/master/papers/Noisy%20Networks%20for%20Exploration.md)
 
-Disclaimer: this code is highl based on [@openai/baselines](https://github.com/openai/baselines). Thanks for the great works!
+Disclaimer: this code is highly based on [@openai/baselines](https://github.com/openai/baselines). Thanks for the great works!
+
+## Benchmarking Environment
+
+I train and evaluate on the following environments:
+
+![](figures/environments.png)
 
 ## Results
 
@@ -30,7 +38,7 @@ Other experiment results will be added soon :fire: (Benchmarking takes time so b
 
 Note that I pick the environment that is favorable to NoisyNet, according to the paper experiment. In some specific environment, NoisyNet will result in equal or even worse peformance. (You are suggestted to read the paper if you're interested in this repo.)
 
-The corresponding event files can be found at [drive]()
+The corresponding event files can be found at [drive](https://drive.google.com/drive/folders/0B3fKFm-j0RqeR1V0VTRxUExGYzA?usp=sharing)
 
 ## The decreasing \sigma?
 
@@ -65,6 +73,9 @@ python train.py --env Breakout --no-double-q --save-dir MODEL_PATH
 - tensorflow
 - python > 3.5
 - gym[atari]
+
+# Acknowledgements
+- @openai/baselines
 
 ## Reference
 - Noisy Networks for Exploration

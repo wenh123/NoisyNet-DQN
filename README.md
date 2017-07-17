@@ -11,6 +11,9 @@ Disclaimer: this code is highl based on [@openai/baselines](https://github.com/o
 Experiment on Atlantis-NoFrameskip-v4:
 ![](figures/atlantis.png)
 
+Experiment on DoubleDunk-NoFrameskip-v4:
+![](figures/double-dunk.png)
+
 Experiment on DemonAttack-NoFrameskip-v4:
 ![](figures/demon-attack.png)
 
@@ -28,6 +31,12 @@ Other experiment results will be added soon :fire: (Benchmarking takes time so b
 Note that I pick the environment that is favorable to NoisyNet, according to the paper experiment. In some specific environment, NoisyNet will result in equal or even worse peformance. (You are suggestted to read the paper if you're interested in this repo.)
 
 The corresponding event files can be found at [drive]()
+
+## The decreasing \sigma?
+
+Different from OpenAI's [paper](https://arxiv.org/abs/1706.01905), DM's paper uses learnable parameter to determine the scale of the noise. So, you might curious about the scale of the \sigma. Here, I train NoisyNet-DQN on ```DoubleDunk-NoFrameskip-v4``` and record the mean of the \sigma:
+
+![](figures/double-dunk-sigma.png)
 
 ## Usage
 

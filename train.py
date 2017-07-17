@@ -163,10 +163,20 @@ if __name__ == '__main__':
         steps_per_iter = RunningAvg(0.999)
         iteration_time_est = RunningAvg(0.999)
         obs = env.reset()
+        # Record the mean of the \sigma
+        sigma_name_list = []
+        sigma_list = []
+        for param in tf.trainable_variables():
+            # only record the \sigma in the action network
+            if 'sigma' in param.name and 'deepq/q_func/action_value' in param.name:
+                summary_name = param.name.replace('deepq/q_func/action_value/', '').replace('/', '.').split(':')[0]
+                sigma_name_list.append(summary_name)
+                sigma_list.append(tf.reduce_mean(param))
+        f_mean_sigma = U.function(inputs=[], outputs=sigma_list)
         # Statistics
         writer = tf.summary.FileWriter(savedir, sess.graph)
-        im_stats = statistics(scalar_keys=['action', 'im_reward', 'td_errors', 'huber_loss'])
-        ep_stats = statistics(scalar_keys=['ep_reward', 'ep_length'])
+        im_stats = statistics(scalar_keys=['action', 'im_reward', 'td_errors', 'huber_loss']+sigma_name_list)
+        ep_stats = statistics(scalar_keys=['ep_reward', 'ep_length'])  
         # Main trianing loop
         ep_length = 0
         while True:
@@ -201,7 +211,8 @@ if __name__ == '__main__':
                     new_priorities = np.abs(td_errors) + args.prioritized_eps
                     replay_buffer.update_priorities(batch_idxes, new_priorities)
                 # Write summary
-                im_stats.add_all_summary(writer, [action, rew, np.mean(td_errors), np.mean(huber_loss)], num_iters)
+                mean_sigma = f_mean_sigma()
+                im_stats.add_all_summary(writer, [action, rew, np.mean(td_errors), np.mean(huber_loss)]+mean_sigma, num_iters)
 
             # Update target network.
             if num_iters % args.target_update_freq == 0:
